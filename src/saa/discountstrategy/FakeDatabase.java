@@ -10,5 +10,5 @@ package saa.discountstrategy;
  * @author Gladwin
  */
 public class FakeDatabase {
-    
+    private Customer[] customers;
 }
