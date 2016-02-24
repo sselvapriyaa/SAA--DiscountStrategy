@@ -13,7 +13,7 @@ public class FakeDatabase implements DatabaseStrategy {
     private Customer[] customers= {
         new Customer("100","BOb James"),
         new Customer("200","Sally Smith"),
-        new Customer("300","")
+        new Customer("300","Priya Anand")
     };
     
     private Product[] products={
@@ -50,4 +50,17 @@ public class FakeDatabase implements DatabaseStrategy {
         }
         return customer;
     }
+
+    @Override
+    public final void addProduct(Product product) {
+    
+    for(Product p: products){
+        if(p.getProdId().equals(product)){
+          return;  
+            
+        }
+    }
+     
+    }
 }
+

@@ -21,11 +21,11 @@ public class Receipt {
         return customer;
     }
 
-    public void setDb(DatabaseStrategy db) {
+    public final void setDb(DatabaseStrategy db) {
         this.db = db;
     }
 
-    public void setCustomer(Customer customer) {
+    public final void setCustomer(Customer customer) {
         this.customer = customer;
     }
     

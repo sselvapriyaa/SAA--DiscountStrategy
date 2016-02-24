@@ -13,11 +13,11 @@ public class Register {
     private Receipt receipt;
     private String storeName;
 
-    public Receipt getReceipt() {
+    public final Receipt getReceipt() {
         return receipt;
     }
 
-    public String getStoreName() {
+    public final String getStoreName() {
         return storeName;
     }
 
@@ -39,7 +39,7 @@ public class Register {
         
     }
     
-    public final void addItemToSale(String prodId,int qty){
-        
+    public final void addItemToSale(String prodId,DatabaseStrategy db){
+        receipt=new Receipt(prodId,db);
     }
 }
