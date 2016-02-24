@@ -25,6 +25,7 @@ public class SAADiscountStrategy {
        
        Register register =new Register();
        register.startNewSale("100", db);
+       
     }
     
 }

@@ -50,17 +50,21 @@ public class FakeDatabase implements DatabaseStrategy {
         }
         return customer;
     }
-
-    @Override
-    public final void addProduct(Product product) {
+// add in once arraylist is learned
     
-    for(Product p: products){
-        if(p.getProdId().equals(product)){
-          return;  
-            
-        }
-    }
-     
-    }
+//    @Override
+//    public final void addProduct(Product p) {
+//    
+//    for(Product p1: products){
+//        if(p1.getProdId().equals(p.getProdId())){
+//            return;
+//           
+//                }
+//        else{
+//            products.
+//        }
+//     
+//    }
+
 }
 

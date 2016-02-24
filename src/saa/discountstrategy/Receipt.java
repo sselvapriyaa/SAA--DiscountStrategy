@@ -13,11 +13,11 @@ public class Receipt {
     private DatabaseStrategy db;
     private Customer customer;
 
-    public DatabaseStrategy getDb() {
+    public final DatabaseStrategy getDb() {
         return db;
     }
 
-    public Customer getCustomer() {
+    public final Customer getCustomer() {
         return customer;
     }
 
