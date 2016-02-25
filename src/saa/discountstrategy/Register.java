@@ -29,7 +29,7 @@ public class Register {
         this.storeName = storeName;
     }
     
-    public final void startNewSale(String custId,DatabaseStrategy db ){
+        public final void startNewSale(String custId,DatabaseStrategy db ){
         // needs validation
         receipt = new Receipt(custId, db);
         
@@ -39,7 +39,8 @@ public class Register {
         
     }
     
-    public final void addItemToSale(String prodId,DatabaseStrategy db){
-        receipt=new Receipt(prodId,db);
+    public final void addItemToSale(String prodId,int qty){
+       receipt.addItemToReceipt(prodId, qty);
+       
     }
 }

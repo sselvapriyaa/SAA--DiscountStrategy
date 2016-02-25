@@ -12,7 +12,35 @@ package saa.discountstrategy;
 public class Receipt {
     private DatabaseStrategy db;
     private Customer customer;
-
+    private LineItem[] lineItems;
+    
+    public Receipt(String custId,DatabaseStrategy db)
+    {
+        setDb(db);
+        setCustomer(db.findCustomerById(custId));
+        lineItems=new LineItem[0];
+    }
+    
+    public void addItemToReceipt(String prodId,int qty){
+       LineItem item = new LineItem(prodId,qty,db);
+       addItemToArray(lineItems,item);
+       
+//       LineItem[] tempArray = new LineItem[lineItems.length +1];
+//       
+//       System.arraycopy(lineItems, 0, tempArray, 0, lineItems.length);
+//       tempArray[tempArray.length -1] = item;
+//       lineItems =tempArray;
+        
+    }
+    
+    private void addItemToArray(LineItem[] origArray, LineItem item){
+         LineItem[] tempArray = new LineItem[origArray.length +1];
+         System.arraycopy(origArray, 0, tempArray, 0, origArray.length);
+         tempArray[tempArray.length -1] = item;
+         origArray =tempArray;
+         lineItems=origArray;
+    }
+            
     public final DatabaseStrategy getDb() {
         return db;
     }
@@ -28,12 +56,15 @@ public class Receipt {
     public final void setCustomer(Customer customer) {
         this.customer = customer;
     }
-    
-    public Receipt(String custId,DatabaseStrategy db)
-    {
-        setDb(db);
-        setCustomer(db.findCustomerById(custId));
+
+    public LineItem[] getLineItems() {
+        return lineItems;
     }
+
+    public void setLineItems(LineItem[] lineItems) {
+        this.lineItems = lineItems;
+    }
+    
     
    
     

@@ -11,7 +11,7 @@ package saa.discountstrategy;
  */
 public class FakeDatabase implements DatabaseStrategy {
     private Customer[] customers= {
-        new Customer("100","BOb James"),
+        new Customer("100","Bob James"),
         new Customer("200","Sally Smith"),
         new Customer("300","Peter Piper")
     };
