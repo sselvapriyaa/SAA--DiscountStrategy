@@ -13,7 +13,7 @@ public class FakeDatabase implements DatabaseStrategy {
     private Customer[] customers= {
         new Customer("100","BOb James"),
         new Customer("200","Sally Smith"),
-        new Customer("300","Priya Anand")
+        new Customer("300","Peter Piper")
     };
     
     private Product[] products={
@@ -60,9 +60,7 @@ public class FakeDatabase implements DatabaseStrategy {
 //            return;
 //           
 //                }
-//        else{
-//            products.
-//        }
+//        
 //     
 //    }
 
