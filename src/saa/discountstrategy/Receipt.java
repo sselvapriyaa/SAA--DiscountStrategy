@@ -13,6 +13,7 @@ public class Receipt {
     private DatabaseStrategy db;
     private Customer customer;
     private LineItem[] lineItems;
+    private int total;
     
     public Receipt(String custId,DatabaseStrategy db)
     {
@@ -39,6 +40,12 @@ public class Receipt {
          tempArray[tempArray.length -1] = item;
          origArray =tempArray;
          lineItems=origArray;
+    }
+    public final double getGrandTotal(){
+        for(LineItem item : lineItems){
+             total+=item.getSubTotal(item.getQty(),item.getProduct().getUnitCost());
+        }
+        return total;
     }
             
     public final DatabaseStrategy getDb() {

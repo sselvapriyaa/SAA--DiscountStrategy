@@ -15,7 +15,6 @@ public interface DatabaseStrategy {
 
     Product findProductById(String prodId);
     
-   // void addProduct(Product product);
     
     
     

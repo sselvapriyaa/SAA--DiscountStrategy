@@ -12,6 +12,21 @@ package saa.discountstrategy;
 public class Register {
     private Receipt receipt;
     private String storeName;
+    
+      public final void startNewSale(String custId,DatabaseStrategy db ){
+        // needs validation
+        receipt = new Receipt(custId, db);
+        
+    }
+    
+    public final void endSale(){
+        
+    }
+    
+    public final void addItemToSale(String prodId,int qty){
+       receipt.addItemToReceipt(prodId, qty);
+       
+    }
 
     public final Receipt getReceipt() {
         return receipt;
@@ -29,18 +44,5 @@ public class Register {
         this.storeName = storeName;
     }
     
-        public final void startNewSale(String custId,DatabaseStrategy db ){
-        // needs validation
-        receipt = new Receipt(custId, db);
-        
-    }
-    
-    public final void endSale(){
-        
-    }
-    
-    public final void addItemToSale(String prodId,int qty){
-       receipt.addItemToReceipt(prodId, qty);
-       
-    }
+      
 }

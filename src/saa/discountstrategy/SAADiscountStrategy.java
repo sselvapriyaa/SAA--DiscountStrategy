@@ -35,7 +35,13 @@ public class SAADiscountStrategy {
        LineItem[] items = register.getReceipt().getLineItems();
        for(LineItem item : items){
            System.out.println(item.getProduct().getProdName());
+           
        }
+       for(LineItem item : items){
+           System.out.println(item.getProduct().getUnitCost()+"    " + item.getProduct().getDiscount().getDiscountAmt( item.getQty(), item.getProduct().getUnitCost()));
+           
+       }
+        System.out.println(register.getReceipt().getGrandTotal());
        
        
     }
