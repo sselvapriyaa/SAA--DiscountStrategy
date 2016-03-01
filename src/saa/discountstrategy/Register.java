@@ -12,6 +12,10 @@ package saa.discountstrategy;
 public class Register {
     private Receipt receipt;
     private String storeName;
+
+    public Register(String storeName) {
+        this.storeName = storeName;
+    }
     
       public final void startNewSale(String custId,DatabaseStrategy db ){
         // needs validation

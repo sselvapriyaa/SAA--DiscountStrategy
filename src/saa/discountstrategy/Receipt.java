@@ -41,12 +41,13 @@ public class Receipt {
          origArray =tempArray;
          lineItems=origArray;
     }
-    public final double getGrandTotal(){
-        for(LineItem item : lineItems){
-             total+=item.getSubTotal(item.getQty(),item.getProduct().getUnitCost());
-        }
-        return total;
-    }
+//    public final double getGrandTotal(){
+//        for(LineItem item : lineItems){
+//             total+=item.getExtPrice(item.getQty() ,item.getProduct().getUnitCost());
+//        }
+//        return total;
+//    }
+    
             
     public final DatabaseStrategy getDb() {
         return db;

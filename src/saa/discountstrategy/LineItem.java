@@ -18,9 +18,17 @@ public class LineItem {
                 setProduct(db.findProductById(prodId));
                         
     }
-    public final double getSubTotal(int qty, double unitCost) {
-        // needs validation
-        return unitCost * qty ;
+       
+     public final double getExtPrice() {
+        return qty * product.getUnitCost();
+    }
+    
+    /**
+     * Gets the discounted total for this line item
+     * @return discounted total for this line item
+     */
+    public final double getDiscountedTotal() {
+        return product.getDiscount().getDiscountAmt(qty, product.getUnitCost());
     }
        
     
