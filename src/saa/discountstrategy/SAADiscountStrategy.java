@@ -37,6 +37,7 @@ public class SAADiscountStrategy {
        LineItem[] items = register.getReceipt().getLineItems();
        for(LineItem item : items){
            System.out.println(item.getProduct().getProdName());
+            System.out.println(item.getQty());       
            
        }
        for(LineItem item : items){
