@@ -18,47 +18,56 @@ public class SAADiscountStrategy {
        // KLUDGE: do configuration here
        
        DatabaseStrategy db=new FakeDatabase();
+       String storeName="Kohls Department Store";
                
-       
+  
+//        ReceiptFormatStrategy fmt = new SimpleReceiptFormat();
+            OutputStrategy[] outputs = {
+            new ConsoleOutput(),
+            new GuiOutput()
+        };
        // Start talking to objects
        
        Register register =new Register("Kohls Department Store");
-       register.startNewSale("100", db);
+       register.startNewSale("100", db,storeName);
        // test so far....
-       Customer customer=register.getReceipt().getCustomer();
-        System.out.println("Customer " + customer.getCustName()
-                +" found and added to the receipt");
+//       Customer customer=register.getReceipt().getCustomer();
+//        System.out.println("Customer " + customer.getCustName()
+//                +" found and added to the receipt");
         register.addItemToSale("11", 2);
         register.addItemToSale("22", 1);
         register.addItemToSale("33", 3);
         
+
+        
         register.endSale();
         //test ....
-       LineItem[] items = register.getReceipt().getLineItems();
-       for(LineItem item : items){
-           System.out.println(item.getProduct().getProdName());
-            System.out.println(item.getQty());       
-           
-       }
-       for(LineItem item : items){
-           System.out.println(item.getProduct().getUnitCost()+"    " + item.getProduct().getDiscount().getDiscountAmt( item.getQty(), item.getProduct().getUnitCost()));
-           
-       }
+//       LineItem[] items = register.getReceipt().getLineItems();
+//       for(LineItem item : items){
+//           
+//           System.out.println(item.getProduct().getProdName());
+//            System.out.println(item.getQty());       
+//           
+//       }
+//       for(LineItem item : items){
+//           System.out.println(item.getProduct().getUnitCost()+"    " + item.getProduct().getDiscount().getDiscountAmt( item.getQty(), item.getProduct().getUnitCost()));
+//           
+//       }
        
         //System.out.println(register.getReceipt().getGrandTotal());
         
-         for(LineItem item : items){     
-         System.out.println(item.getExtPrice()+ "\t" + (item.getExtPrice() - item.getDiscountedTotal())+ " " + item.getDiscountedTotal());
-         }
-         
-         //LineItem[] items = receipt.getLineItems();
+//         for(LineItem item : items){     
+//         System.out.println(item.getExtPrice()+ "\t" + (item.getExtPrice() - item.getDiscountedTotal())+ " " + item.getDiscountedTotal());
+//         }
+//         
+//         //LineItem[] items = receipt.getLineItems();
+//         System.out.println("Grand Total:");
+//         System.out.println("Total before Discount:");
+//         System.out.println("Total after Discount:");
+//         System.out.println("Total savings:");
        
             
-         System.out.println("Grand Totals:");
-         System.out.println("Total Before Discount:");
-         System.out.println("Total After Discount:");
-         System.out.println("Total Savings:");
-       
+        
     
     
     }

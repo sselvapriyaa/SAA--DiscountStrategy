@@ -13,13 +13,38 @@ public class Receipt {
     private DatabaseStrategy db;
     private Customer customer;
     private LineItem[] lineItems;
-    private int total;
-    
-    public Receipt(String custId,DatabaseStrategy db)
+    private static int receiptNo;
+    private String storeName;
+
+    public static int getReceiptNo() {
+        return receiptNo;
+    }
+
+    public static void setReceiptNo(int receiptNo) {
+        Receipt.receiptNo = receiptNo;
+    }
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+     
+    public Receipt(String custId,DatabaseStrategy db,String storeName)
     {
+        setStoreName(storeName);
         setDb(db);
         setCustomer(db.findCustomerById(custId));
         lineItems=new LineItem[0];
+    }
+    public Receipt(String storeName, String custId, DatabaseStrategy db) {
+        setStoreName(storeName);
+        receiptNo++;
+        setDb(db);
+        setCustomer(db.findCustomerById(custId));
+        lineItems = new LineItem[0];
     }
     
     public void addItemToReceipt(String prodId,int qty){
@@ -73,7 +98,34 @@ public class Receipt {
         this.lineItems = lineItems;
     }
     
-    
+     
+   // public final void endSale(){
+  //       LineItem[] items = register.getReceipt().getLineItems();
+//       for(LineItem item : items){
+//           
+//           System.out.println(item.getProduct().getProdName());
+//            System.out.println(item.getQty());       
+//           
+//       }
+//       for(LineItem item : items){
+//           System.out.println(item.getProduct().getUnitCost()+"    " + item.getProduct().getDiscount().getDiscountAmt( item.getQty(), item.getProduct().getUnitCost()));
+//           
+//       }
+       
+        //System.out.println(register.getReceipt().getGrandTotal());
+        
+//         for(LineItem item : items){     
+//         System.out.println(item.getExtPrice()+ "\t" + (item.getExtPrice() - item.getDiscountedTotal())+ " " + item.getDiscountedTotal());
+//         }
+//         
+//         //LineItem[] items = receipt.getLineItems();
+//         System.out.println("Grand Total:");
+//         System.out.println("Total before Discount:");
+//         System.out.println("Total after Discount:");
+//         System.out.println("Total savings:");
+       
+            
+    }
    
     
-}
+

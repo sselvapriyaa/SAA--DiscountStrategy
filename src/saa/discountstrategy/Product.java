@@ -51,6 +51,7 @@ public class Product {
     }
 
     public final void setDiscount(DiscountStrategy discount) {
+        //need validation
         this.discount = discount;
     }
     
