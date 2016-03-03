@@ -6,7 +6,8 @@
 package saa.discountstrategy;
 
 /**
- *
+ * An implementation of the DiscountStrategy contract where a discount is 
+ * calculated based on a required minimum quantity.
  * @author Gladwin
  */
 public class QtyDiscount implements DiscountStrategy{
@@ -14,12 +15,18 @@ public class QtyDiscount implements DiscountStrategy{
     private int minQty;
     private final int NO_DISCOUNT=0;
 
+    /**
+     * A custom constructor requiring mandatory fields
+     * @param discountRate - the percent off
+     * @param minQty - the minimum quantity to be eligible for the discount
+     */
     public QtyDiscount(double discountRate, int minQty) {
         setDiscountRate(discountRate);
         setMinQty(minQty);
     }
 
     public final void setMinQty(int minQty) {
+        //needs validation
         this.minQty = minQty;
     }
 
@@ -27,11 +34,14 @@ public class QtyDiscount implements DiscountStrategy{
         return minQty;
     }
 
-    public QtyDiscount(double discountRate) {
-        setDiscountRate(discountRate);
-        
-    }
     
+    /**
+     * Determines whether a discount should be applied based on the quantity.
+     * @param qty - quantity of product purchased
+     * @param unitCost - original price of one item
+     * @return discount amount (qty * unit cost * percent off) or zero if
+     * not eligible for discount.
+     */
     @Override
     public final double getDiscountAmt(int qty, double unitCost) {
         // needs validation

@@ -6,9 +6,10 @@
 package saa.discountstrategy;
 
 /**
- *
+ * The general contract for all output strategy implementations.
  * @author Gladwin
  */
 public interface  OutputStrategy {
      public abstract void output(String data);
+      
 }

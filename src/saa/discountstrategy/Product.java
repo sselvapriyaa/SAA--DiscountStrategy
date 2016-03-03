@@ -6,7 +6,7 @@
 package saa.discountstrategy;
 
 /**
- *
+ * Simulates a real product in a POS system
  * @author Gladwin
  */
 public class Product {
@@ -15,6 +15,13 @@ public class Product {
     private double unitCost;
     private DiscountStrategy discount;
 
+    /**
+     * Custom constructor validates all required information
+     * @param prodId - unique id of product purchased
+     * @param prodName - the name of the product
+     * @param unitCost - the original price for sale of one item
+     * @param discount - the discount strategy used for this product
+     */
     public Product(String prodId, String prodName, double unitCost, DiscountStrategy discount) {
         setProdId(prodId);
         setProdName(prodName);
@@ -34,19 +41,22 @@ public class Product {
         return unitCost;
     }
 
-    public DiscountStrategy getDiscount() {
+    public final DiscountStrategy getDiscount() {
         return discount;
     }
 
     public final void setProdId(String prodId) {
+        //needs validation
         this.prodId = prodId;
     }
 
     public final void setProdName(String prodName) {
+        //needs validation
         this.prodName = prodName;
     }
 
     public final void setUnitCost(double unitCost) {
+        //needs validation
         this.unitCost = unitCost;
     }
 

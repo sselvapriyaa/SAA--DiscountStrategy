@@ -6,7 +6,7 @@
 package saa.discountstrategy;
 
 /**
- *
+ * A simulation of a Customer.
  * @author Gladwin
  */
 public class Customer {

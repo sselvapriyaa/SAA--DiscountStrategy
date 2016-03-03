@@ -6,7 +6,7 @@
 package saa.discountstrategy;
 
 /**
- *
+ * The general contract for all database strategy implementations.
  * @author Gladwin
  */
 public interface DatabaseStrategy {

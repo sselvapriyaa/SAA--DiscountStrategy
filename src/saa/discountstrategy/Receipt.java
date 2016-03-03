@@ -6,7 +6,17 @@
 package saa.discountstrategy;
 
 /**
- *
+ * This class simulates a receipt without any dependency on how it's output.
+ * It also simulates an Order. We could have created a separate order class 
+ * but in a simple simulation like this that is not really necessary because 
+ * the information in an Order object would be the same as the information in
+ * a Receipt. So in this case the Receipt is the Order.
+ * 
+ * The only advantage to having a separate Order would be in situations, such
+ * as an E-Commerce system, where the Order is still being processed (e.g., a
+ * shopping cart that has not been finalized). But even then, unless the 
+ * Order object or ShoppingCart object do something different, it would just
+ * be redundant to have both.
  * @author Gladwin
  */
 public class Receipt {
@@ -16,30 +26,15 @@ public class Receipt {
     private static int receiptNo;
     private String storeName;
 
-    public static int getReceiptNo() {
-        return receiptNo;
-    }
-
-    public static void setReceiptNo(int receiptNo) {
-        Receipt.receiptNo = receiptNo;
-    }
-
-    public String getStoreName() {
-        return storeName;
-    }
-
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
-    }
-     
-    public Receipt(String custId,DatabaseStrategy db,String storeName)
-    {
-        setStoreName(storeName);
-        setDb(db);
-        setCustomer(db.findCustomerById(custId));
-        lineItems=new LineItem[0];
-    }
-    public Receipt(String storeName, String custId, DatabaseStrategy db) {
+  
+  
+    /**
+     * Custom constructor initializes required fields.
+     * @param custId - an unique customer id
+     * @param db - the persistence solution
+     * * @param storeName - name of seller
+     */
+    public Receipt( String custId, DatabaseStrategy db,String storeName) {
         setStoreName(storeName);
         receiptNo++;
         setDb(db);
@@ -47,10 +42,19 @@ public class Receipt {
         lineItems = new LineItem[0];
     }
     
+    /**
+     * Adds a sale item to the receipt
+     * @param prodId - the unique id of a product which simulates what a
+     * bar code scanner would capture. NOTE: not currently validated.
+     * @param qty - the number of this product being purchased
+     */
     public void addItemToReceipt(String prodId,int qty){
+       // needs validation for all arguments passed in
        LineItem item = new LineItem(prodId,qty,db);
        addItemToArray(lineItems,item);
        
+         /// OTHER OPTIONS NOT CURRENTLY USED ////
+         
 //       LineItem[] tempArray = new LineItem[lineItems.length +1];
 //       
 //       System.arraycopy(lineItems, 0, tempArray, 0, lineItems.length);
@@ -59,6 +63,8 @@ public class Receipt {
         
     }
     
+    // proper encapsulation -- hide this helper method because it is not
+    // needed anywhere else
     private void addItemToArray(LineItem[] origArray, LineItem item){
          LineItem[] tempArray = new LineItem[origArray.length +1];
          System.arraycopy(origArray, 0, tempArray, 0, origArray.length);
@@ -66,14 +72,9 @@ public class Receipt {
          origArray =tempArray;
          lineItems=origArray;
     }
-//    public final double getGrandTotal(){
-//        for(LineItem item : lineItems){
-//             total+=item.getExtPrice(item.getQty() ,item.getProduct().getUnitCost());
-//        }
-//        return total;
-//    }
+  
+      ///// GETTERS/SETTERS DON'T NEED DOCS UNTIL VALIDATION CODE ADDED /////
     
-            
     public final DatabaseStrategy getDb() {
         return db;
     }
@@ -83,48 +84,38 @@ public class Receipt {
     }
 
     public final void setDb(DatabaseStrategy db) {
+        //needs validation
         this.db = db;
     }
 
     public final void setCustomer(Customer customer) {
+         //needs validation
         this.customer = customer;
     }
 
-    public LineItem[] getLineItems() {
+    public final LineItem[] getLineItems() {
         return lineItems;
     }
 
-    public void setLineItems(LineItem[] lineItems) {
+    public final void setLineItems(LineItem[] lineItems) {
+         //needs validation
         this.lineItems = lineItems;
     }
-    
+      public static int getReceiptNo() {
+        return receiptNo;
+    }
+
+
+    public final String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+         //needs validation
+        this.storeName = storeName;
+    }
      
-   // public final void endSale(){
-  //       LineItem[] items = register.getReceipt().getLineItems();
-//       for(LineItem item : items){
-//           
-//           System.out.println(item.getProduct().getProdName());
-//            System.out.println(item.getQty());       
-//           
-//       }
-//       for(LineItem item : items){
-//           System.out.println(item.getProduct().getUnitCost()+"    " + item.getProduct().getDiscount().getDiscountAmt( item.getQty(), item.getProduct().getUnitCost()));
-//           
-//       }
-       
-        //System.out.println(register.getReceipt().getGrandTotal());
-        
-//         for(LineItem item : items){     
-//         System.out.println(item.getExtPrice()+ "\t" + (item.getExtPrice() - item.getDiscountedTotal())+ " " + item.getDiscountedTotal());
-//         }
-//         
-//         //LineItem[] items = receipt.getLineItems();
-//         System.out.println("Grand Total:");
-//         System.out.println("Total before Discount:");
-//         System.out.println("Total after Discount:");
-//         System.out.println("Total savings:");
-       
-            
+ 
     }
    
     

@@ -6,7 +6,9 @@
 package saa.discountstrategy;
 
 /**
- *
+ * An implementation of the DatabaseStrategy contract. This fakes database 
+ * access by using arrays of hard-code products and customers. There 
+ * currently is no way of modifying these.
  * @author Gladwin
  */
 public class FakeDatabase implements DatabaseStrategy {
@@ -22,9 +24,15 @@ public class FakeDatabase implements DatabaseStrategy {
         new Product("33","Men's Black Belt",39.95,new NoDiscount())
         
     };
+    /**
+     * Finds a product by its unique id.
+     * @param prodId
+     * @return a Product object or null if not found
+     */
     
     @Override
     public final Product findProductById(String prodId){
+        //needs validation
         Product product=null;
         
          for(Product p: products){
@@ -36,6 +44,11 @@ public class FakeDatabase implements DatabaseStrategy {
         return product;
         
     }
+    /**
+     * Finds a customer by its unique id.
+     * @param custId
+     * @return a Customer object or null if not found
+     */
     
     @Override
     public final Customer findCustomerById(String custId){
@@ -50,20 +63,7 @@ public class FakeDatabase implements DatabaseStrategy {
         }
         return customer;
     }
-// add in once arraylist is learned
-    
-//    @Override
-////    public final void addLineItem(String prodId) {
-//    // needs validation
-//    LineItem lineitem = null;
-//    for(Product p1: products){
-//        if(p1.getProdId().equals(prodId.getProdId())){
-//            return;
-//           
-//                }
-//        
-//      
-//    }
+
 
 }
 

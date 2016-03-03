@@ -6,7 +6,7 @@
 package saa.discountstrategy;
 
 /**
- *
+ * The general contract for all discount strategy implementations.
  * @author Gladwin
  */
 public interface DiscountStrategy {

@@ -6,7 +6,8 @@
 package saa.discountstrategy;
 
 /**
- *
+ * An implementation of the DiscountStrategy contract representing a flat
+ * dollar amount off the regular price.
  * @author Gladwin
  */
 public class FlatAmtDiscount implements DiscountStrategy{
@@ -16,6 +17,15 @@ public class FlatAmtDiscount implements DiscountStrategy{
         setDiscountRate(discountRate);
         
     }
+    
+    /**
+     * Gets a flat amount off the regular price regardless of quantity.
+     * @param qty - the quantity of product purchased. NOTE: not currently
+     * validated
+     * @param unitCost - the original price of one product. NOTE: not 
+     * currently validated.
+     * @return 
+     */
     
     @Override
     public final double getDiscountAmt(int qty, double unitCost) {

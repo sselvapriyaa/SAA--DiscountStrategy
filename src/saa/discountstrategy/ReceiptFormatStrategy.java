@@ -6,7 +6,7 @@
 package saa.discountstrategy;
 
 /**
- *
+ * The general contract for all receipt format strategy implementations.
  * @author Gladwin
  */
 public interface ReceiptFormatStrategy {
@@ -24,6 +24,7 @@ public interface ReceiptFormatStrategy {
     public final static String TOT_AFTER_DISCOUNT = "Total After Discount: ";
     public final static String AMT_SAVED = "Total Saved Today: ";
     public String store = null;
+   
     
     
     public abstract String format(Receipt receipt,String storeName);

@@ -6,16 +6,16 @@
 package saa.discountstrategy;
 
 /**
- *
+ * An implementation of the DiscountStrategy contract that represents no
+ * discount whatsoever.
  * @author Gladwin
  */
 public class NoDiscount implements DiscountStrategy{
     private double discountRate ;
-    private final int NO_DISCOUNT=0;
+    private final int NO_DISCOUNT=0; // avoid magic numbers!
 
     public NoDiscount() {
-      
-        
+              
     }
     
     @Override

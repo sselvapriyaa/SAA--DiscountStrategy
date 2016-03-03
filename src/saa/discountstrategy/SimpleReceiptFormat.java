@@ -6,7 +6,8 @@
 package saa.discountstrategy;
 
 /**
- *
+ * This is a strategy implementation of the ReceiptFormatStrategy contract that
+ * shows a very verbose line item that includes the discount on each item.
  * @author Gladwin
  */
 public class SimpleReceiptFormat implements ReceiptFormatStrategy{
@@ -20,6 +21,9 @@ public class SimpleReceiptFormat implements ReceiptFormatStrategy{
         double totalDiscount = 0;
         String store = storeName;
         double discount=0;
+        
+        // StringBuilder is just a more efficient way of doing lots of
+        // String concatenation.
        StringBuilder sb = new StringBuilder();
 
         // NOTE: to avoid many magic number violations we have used constants
@@ -32,16 +36,16 @@ public class SimpleReceiptFormat implements ReceiptFormatStrategy{
         sb.append("\n\n").append(ReceiptFormatStrategy.THANK_YOU)
                 .append(receipt.getCustomer().getCustName());
         sb.append("\n").append(SimpleReceiptFormat.FOR_SHOPPING_AT)
-                .append(receipt.getStoreName()).append("\n");
-
+                .append(receipt.getStoreName())
+                .append("\n");
         // line item info
         sb.append("\n\n").append(ReceiptFormatStrategy.ITEM_ID).append("\t")
                 .append(ReceiptFormatStrategy.ITEM_NAME).append("\t\t\t")
                 .append(ReceiptFormatStrategy.UNIT_COST).append("\t")
                 .append(ReceiptFormatStrategy.QTY).append("\t")
-                .append(ReceiptFormatStrategy.EXT_PRICE);
-                //.append(ReceiptFormatStrategy.DISCOUNT_AMT);
-        sb.append("\n---\t----\t\t\t---------\t---\t----------");
+                .append(ReceiptFormatStrategy.EXT_PRICE).append("\t");
+                sb.append(ReceiptFormatStrategy.DISCOUNT_AMT);
+                sb.append("\n---\t----\t\t\t---------\t---\t----------\t---------");
 
         LineItem[] items = receipt.getLineItems();
         for (LineItem item : items) {

@@ -6,19 +6,31 @@
 package saa.discountstrategy;
 
 /**
- *
+ * A simulation of a LineItem on a Receipt.
  * @author Gladwin
  */
 public class LineItem {
     private Product product;
     private int qty;
+    
+    /**
+     * Custom constructor uses required prodId and DatabaseStrategy to lookup
+     * Product and store it along with quantity required by customer.
+     * @param prodId
+     * @param qty
+     * @param db 
+     */
 
     public LineItem(String prodId, int qty,DatabaseStrategy db) {
                 this.qty = qty;
                 setProduct(db.findProductById(prodId));
                         
     }
-       
+      
+    /**
+     * Gets the extended price (subtotal) for this line item.
+     * @return the quantity * unit cost
+     */ 
      public final double getExtPrice() {
         return qty * product.getUnitCost();
     }
@@ -32,19 +44,25 @@ public class LineItem {
     }
        
     
-    public Product getProduct() {
+    public final Product getProduct() {
         return product;
     }
+   /**
+    * * CAUTION: product is to be validated
+    * @param product 
+    */
 
-    public void setProduct(Product product) {
+    public final void setProduct(Product product) {
+        //needs validation
         this.product = product;
     }
 
-    public int getQty() {
+    public final int getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public final void setQty(int qty) {
+        //needs validation
         this.qty = qty;
     }
     
