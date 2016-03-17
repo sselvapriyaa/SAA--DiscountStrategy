@@ -7,7 +7,7 @@ package saa.discountstrategy;
 
 /**
  * A simulation of a LineItem on a Receipt.
- * @author Gladwin
+ * @author  Gladwin
  */
 public class LineItem {
     private Product product;
@@ -22,7 +22,7 @@ public class LineItem {
      */
 
     public LineItem(String prodId, int qty,DatabaseStrategy db) {
-                this.qty = qty;
+                setQty(qty);
                 setProduct(db.findProductById(prodId));
                         
     }

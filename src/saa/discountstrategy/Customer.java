@@ -13,6 +13,7 @@ public class Customer {
     private String custId;
     private String custName;
 
+
     public Customer(String custId, String custName) {
         setCustId(custId);
         setCustName(custName);
@@ -26,15 +27,31 @@ public class Customer {
     public final String getCustName() {
         return custName;
     }
-
-    public final void setCustId(String custId) {
+ // cannot be null and cannot be empty and min and max length
+    // not more than 15 characters
+    public final void setCustId(String custId)throws IllegalArgumentException {
         // needs validation
+                   
+                 if(custId == null || custId.isEmpty() ||
+                custId.length() <3 || custId.length() >15){
+            throw new IllegalArgumentException(
+            "Sorry cust Id is mandatory and must be between 3 and 15 characters in length.");
+        }
+        
         this.custId = custId;
     }
-
-    public final void setCustName(String custName) {
+    
+  
+   // cannot be null and cannot be empty and min and max length
+    // not more than 15 characters
+    public final void setCustName(String custName) throws IllegalArgumentException{
         // needs validation
+                     if(custName == null || custName.isEmpty() ||
+                custName.length() <3 || custName.length() >15){
+            throw new IllegalArgumentException(
+            "Sorry cust Name is mandatory and must be between 3 and 15 characters in length.");
+        }
         this.custName = custName;
     }
-    
+
 }

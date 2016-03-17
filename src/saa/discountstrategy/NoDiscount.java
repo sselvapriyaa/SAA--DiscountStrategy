@@ -15,7 +15,7 @@ public class NoDiscount implements DiscountStrategy{
     private final int NO_DISCOUNT=0; // avoid magic numbers!
 
     public NoDiscount() {
-              
+               
     }
     
     @Override

@@ -29,10 +29,17 @@ public class FakeDatabase implements DatabaseStrategy {
      * @param prodId
      * @return a Product object or null if not found
      */
-    
+   // cannot be null or empty.must be atleast
+    // 3 characters but no more than 6 characters
     @Override
-    public final Product findProductById(String prodId){
+    public final Product findProductById(String prodId)throws IllegalArgumentException {
         //needs validation
+         if(prodId == null || prodId.isEmpty() ||
+                prodId.length() <3 || prodId.length() >6){
+            throw new IllegalArgumentException(
+            "Sorry prodId is mandatory and must be between 3 and 6 characters in length.");
+        }
+        
         Product product=null;
         
          for(Product p: products){
@@ -49,10 +56,19 @@ public class FakeDatabase implements DatabaseStrategy {
      * @param custId
      * @return a Customer object or null if not found
      */
-    
+     
+    // cannot be null and cannot be empty and min and max length
+    // not more than 15 characters
     @Override
-    public final Customer findCustomerById(String custId){
+    public final Customer findCustomerById(String custId)throws IllegalArgumentException{
         // needs validation
+                          
+                 if(custId == null || custId.isEmpty() ||
+                custId.length() <3 || custId.length() >15){
+            throw new IllegalArgumentException(
+            "Sorry cust Id is mandatory and must be between 3 and 15 characters in length.");
+        }
+        
         Customer customer=null;
         
         for(Customer c: customers){

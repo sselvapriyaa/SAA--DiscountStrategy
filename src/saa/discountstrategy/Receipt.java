@@ -24,7 +24,7 @@ public class Receipt {
     private Customer customer;
     private LineItem[] lineItems;
     private static int receiptNo;
-    private String storeName;
+    private String storeName; 
 
   
   
